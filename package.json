@@ -1,0 +1,26 @@
+{
+	"name": "null",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"start": "node app-cluster"
+	},
+	"dependencies": {
+		"bcrypt": "*",
+		"browserify": "*",
+		"connect-flash": "*",
+		"connect-mongodb": "*",
+		"ejs": "*",
+		"express": "3.0.x",
+		"express-partials": "*",
+		"jquery-browserify": "*",
+		"mongoose": "*",
+		"passport": "*",
+		"passport-local": "*",
+		"stylus": "*"
+	},
+	"engines": {
+		"node": "0.8.x",
+		"npm": "1.1.x"
+	}
+}

@@ -1,0 +1,59 @@
+button, input {
+	color: #eee;
+
+	&:focus {
+		color: #fff;
+	}
+}
+
+button, input[type=checkbox], input[type=radio] {
+	cursor: pointer;
+}
+
+input:not([type]), input[type="color"], input[type="date"],
+input[type="datetime"], input[type="datetime-local"],
+input[type="email"], input[type="month"], input[type="number"],
+input[type="password"], input[type="tel"], input[type="text"],
+input[type="time"], input[type="url"], input[type="week"] {
+	height: 24px;
+
+	line-height: 1em;
+
+	padding-top: 2px;
+	padding-bottom: 0;
+
+	margin: 0 0 2px;
+
+	outline: 0;
+
+	background: #555;
+	box-shadow: 0 3px #000 inset;
+	border: 1px solid #000;
+}
+
+::-webkit-input-placeholder {
+	line-height: 1em;
+	padding-top: 2px;
+	padding-bottom: 0;
+}
+
+button {
+	position: relative;
+	top: -3px;
+
+	margin: 5px 0 0;
+
+	box-shadow: 0 3px #000;
+	border: 1px solid #000;
+	background: #555;
+
+	&:hover {
+		top: -4px;
+		box-shadow: 0 4px #000;
+	}
+
+	&:active {
+		top: -2px;
+		box-shadow: 0 2px #000;
+	}
+}
