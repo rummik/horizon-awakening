@@ -1,27 +1,21 @@
 {
-	"name": "null",
-	"version": "0.0.0",
-	"private": true,
-	"scripts": {
-		"start": "node app-cluster"
-	},
-	"dependencies": {
-		"accounting": "*",
-		"bcrypt": "*",
-		"browserify": "*",
-		"connect-flash": "*",
-		"connect-mongodb": "*",
-		"ejs": "*",
-		"express": "3.0.x",
-		"express-partials": "*",
-		"jquery-browserify": "*",
-		"mongoose": "*",
-		"passport": "*",
-		"passport-local": "*",
-		"stylus": "*"
-	},
-	"engines": {
-		"node": "0.8.x",
-		"npm": "1.1.x"
-	}
+  "name": "horizon-awakening",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "accounting": "~0.3.2",
+    "bcrypt": "~0.7.8",
+    "connect-flash": "~0.1.1",
+    "express-partials": "~0.2.0",
+    "ejs": "~1.0.0",
+    "passport-local": "~1.0.0",
+    "passport": "~0.2.0",
+    "jquery-browserify": "~1.8.1",
+    "express": "~3.5.2",
+    "connect-browserify": "~2.0.1",
+    "stylus": "~0.44.0",
+    "mongoose": "~3.8.8",
+    "connect-mongodb": "~1.1.5",
+    "express-cf-geoip": "~1.0.0"
+  }
 }

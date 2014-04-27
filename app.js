@@ -1,34 +1,30 @@
 var express    = require('express'),
     partials   = require('express-partials'),
-    browserify = require('browserify'),
+    browserify = require('connect-browserify'),
+    geoip      = require('express-cf-geoip'),
     http       = require('http'),
     path       = require('path'),
     fs         = require('fs'),
     options    = require('./options'),
     app        = express();
 
-app.configure(function() {
-	app.set('port', process.env.PORT || 3000);
-	app.set('views', __dirname + '/views');
-	app.set('view engine', 'ejs');
-	app.use(express.favicon(__dirname + '/public/favicon.ico'));
-	app.use(express.logger('dev'));
-	app.use(express.bodyParser());
-	app.use(express.methodOverride());
-	app.use(express.cookieParser(options.cookieSecret));
-	app.use(express.session({ secret: options.sessionSecret }));
-	app.use(function(req, res, next) { req.realip = req.header('cf-connecting-ip') || req.ip; next(); });
-	app.use(function(req, res, next) { req.geoip = geoip(req.header('cf-ipcountry')); next(); });
-	app.use(partials());
-	app.use(app.router);
-	app.use(browserify(__dirname + '/scripts/index.js'));
-	app.use(require('stylus').middleware({ src: __dirname + '/styles', dest: __dirname + '/public' }));
-	app.use(express.static(path.join(__dirname, 'public')));
-});
-
-app.configure('development', function(){
-	app.use(express.errorHandler());
-});
+app.set('port', process.env.PORT || 3000);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(express.favicon(__dirname + '/public/favicon.ico'));
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(express.cookieParser(options.cookieSecret));
+app.use(express.session({ secret: options.sessionSecret }));
+app.use(function(req, res, next) { req.realip = req.header('cf-connecting-ip') || req.ip; next(); });
+app.use(geoip.middleware('us'));
+app.use(partials());
+app.use(app.router);
+app.use('/game.js', browserify(__dirname + '/scripts/index.js'));
+app.use(require('stylus').middleware({ src: __dirname + '/styles', dest: __dirname + '/public' }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.errorHandler());
 
 fs.readdirSync(__dirname + '/routes').forEach(function(file) {
 	var routes = require(__dirname + '/routes/' + file);
